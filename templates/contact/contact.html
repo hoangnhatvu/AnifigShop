@@ -1,0 +1,100 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/contact_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/contact_responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}"><link rel="stylesheet" type="text/css" href="{% static 'plugins/slick-1.8.0/slick.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/slick-1.8.0/slick.css' %}">
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+<link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+<div class="super_container">
+	<!-- Contact Info -->
+
+	<div class="contact_info">
+		<div class="container">
+			{% include 'includes/alerts.html' %}
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					<div class="contact_info_container d-flex flex-lg-row flex-column justify-content-between align-items-between">
+						<!-- Contact Item -->
+						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+							<div class="contact_info_image"><img src="images/contact_1.png" alt=""></div>
+							<div class="contact_info_content">
+								<div class="contact_info_title">Số điện thoại</div>
+								<div class="contact_info_text">+84 397 611 383</div>
+							</div>
+						</div>
+
+						<!-- Contact Item -->
+						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+							<div class="contact_info_image"><img src="images/contact_2.png" alt=""></div>
+							<div class="contact_info_content">
+								<div class="contact_info_title">Email</div>
+								<div class="contact_info_text">hoangnhatvu350800@gmail.com</div>
+							</div>
+						</div>
+
+						<!-- Contact Item -->
+						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+							<div class="contact_info_image"><img src="images/contact_3.png" alt=""></div>
+							<div class="contact_info_content">
+								<div class="contact_info_title">Địa chỉ</div>
+								<div class="contact_info_text">Số 1, Võ Văn Ngân</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contact Form -->
+
+	<div class="contact_form">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					<div class="contact_form_container">
+						<div class="contact_form_title">Gửi phản hồi cho chúng tôi</div>
+
+						<form action="{% url 'contact' %}" method="POST" id="contact_form">
+							{% csrf_token %}
+							<div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
+								<input type="text" name="name" class="contact_form_name input_field" placeholder="Tên của bạn" required="required" data-error="Vui lòng điền trường này">
+								<input type="text" name="email" class="contact_form_email input_field" placeholder="Email" required="required" data-error="Vui lòng điền trường này">
+								<input type="text" name="phone" class="contact_form_phone input_field" placeholder="Số điện thoại">
+							</div>
+							<div class="contact_form_text">
+								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Nội dung" required="required" data-error="Vui lòng không để trống"></textarea>
+							</div>
+							<div class="contact_form_button">
+								<button type="submit" class="button contact_submit_button">Gửi phản hồi</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel"></div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/contact_custom.js' %}"></script>
+<script src="{% static 'plugins/slick-1.8.0/slick.js' %}"></script>
+<script src="{% static 'plugins/slick-1.8.0/slick.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}

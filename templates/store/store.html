@@ -1,0 +1,196 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/shop_responsive.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="super_container">
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/shop_background.jpg' %}"></div>
+		<div class="home_overlay"></div>
+		<div class="home_content d-flex flex-column align-items-center justify-content-center">
+			<h2 class="home_title">Tất cả sản phẩm</h2>
+		</div>
+	</div>
+
+	<!-- Shop -->
+
+	<div class="shop">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+
+					<!-- Shop Sidebar -->
+					<div class="shop_sidebar">
+						<div class="sidebar_section">
+							<div class="sidebar_title">Danh mục</div>
+							<ul class="sidebar_categories">
+								{% for category in links %}
+									<li><a href="{% url 'products_by_category' category.slug %}">{{category.category_name}}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="sidebar_section filter_by_section">
+							<div class="sidebar_title">Lọc theo</div>
+							<div class="sidebar_subtitle">Giá</div>
+							<div class="filter_price">
+								<div id="slider-range" class="slider_range"></div>
+								<p>Range: </p>
+								<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							</div>
+						</div>
+						<div class="sidebar_section">
+							<div class="sidebar_subtitle brands_subtitle">Hãng</div>
+							<ul class="brands_list">
+								<li class="brand"><a href="{% url 'search' 'Apple'%}">Apple</a></li>
+								<li class="brand"><a href="{% url 'search' 'Google'%}">Google</a></li>
+								<li class="brand"><a href="{% url 'search' 'Samsung'%}">Samsung</a></li>
+								<li class="brand"><a href="{% url 'search' 'Xiaomi'%}">Xiaomi</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-lg-9">
+					
+					<!-- Shop Content -->
+
+					<div class="shop_content">
+						<div class="shop_bar clearfix">
+							<div class="shop_product_count"><span>{{products.count}}</span> sản phẩm</div>
+							<div class="shop_sorting">
+								<span>Sắp xếp theo:</span>
+								<ul>
+									<li>
+										<span class="sorting_text">Tên<i class="fas fa-chevron-down"></span></i>
+										<ul>
+											<li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>Tên</li>
+											<li class="shop_sorting_button"data-isotope-option='{ "sortBy": "price" }'>Giá</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="product_grid">
+							<div class="product_grid_border"></div>
+							{% for product in paged_products %}
+							<!-- Product Item -->
+							<div class="product_item">
+								<div class="product_border"></div>
+								<div class="product_image d-flex flex-column align-items-center justify-content-center"><a href={{product.get_url}}><img src="{{product.images.url}}" alt="" width="80%"></div>
+								<style>
+									.product_image img{
+										display:block;
+										transition: all .2s ease;
+									}
+									.product_image img:hover{
+										transform: scale(1.1);
+									}
+									.product_image div{
+										display:block;
+										overflow: hidden;
+									}
+								</style>
+								<div class="product_content">
+									{% if product.sale_price > 0 %}
+									<div class="product_price">${{product.sale_price}}<span>${{product.price}}</span></div>
+									{% else %}
+									<div class="product_price">${{product.price}}</div>
+									{% endif %}
+									<div class="product_name"><div><a href={{product.get_url}} tabindex="0">{{product.product_name}}</a></div></div>
+
+								</div>
+								<ul class="product_marks">
+									<li class="product_mark product_discount">-25%</li>
+									<li class="product_mark product_new">new</li>
+								</ul>
+							</div>
+							{% endfor %}
+						</div>
+
+						<!-- Shop Page Navigation -->
+
+						{% if paged_products %}
+						<nav class="mt-4" aria-label="Page navigation sample">
+							<ul class="pagination">
+								{% if paged_products.has_previous %}
+								<li class="page-item">
+									<a class="page-link" href="{% url 'store' %}?page=1"><<</a>
+								</li>
+								<li class="page-item">
+									<a class="page-link"
+										href="{% url 'store' %}?page={{paged_products.previous_page_number}}"><</a>
+								</li>
+								{% else %}
+								<li class="page-item disabled">
+									<a class="page-link" href="#"><<</a>
+								</li>
+								<li class="page-item disabled">
+									<a class="page-link" href="#"><</a>
+								</li>
+								{% endif %}
+								{% if paged_products.number|add:'-2' >= 1 %}
+								<li class="page-item">
+									<a class="page-link" href="{% url 'store' %}?page={{ paged_products.number|add:'-2' }}">&hellip;</a>
+								</li>
+								{% endif %}
+								{% for page in paged_products.paginator.page_range %}
+								{% if paged_products.number|add:'-1' <= page and page <= paged_products.number|add:'1' %}
+								{% if page == paged_products.number %}
+								<li class="page-item active">
+									<a class="page-link" href="{% url 'store' %}?page={{ page }}">{{ page }}</a>
+								</li>
+								{% else %}
+								<li class="page-item">
+									<a class="page-link" href="{% url 'store' %}?page={{ page }}">{{ page }}</a>
+								</li>
+								{% endif %}
+								{% endif %}
+								{% endfor %}
+								{% if paged_products.number|add:'2' <= paged_products.paginator.num_pages %}
+								<li class="page-item">
+									<a class="page-link" href="{% url 'store' %}?page={{ paged_products.number|add:'2' }}">&hellip;</a>
+								</li>
+								{% endif %}
+								{% if paged_products.has_next %}
+								<li class="page-item">
+									<a class="page-link" href="{% url 'store' %}?page={{paged_products.next_page_number}}">></a>
+								</li>
+								<li class="page-item">
+									<a class="page-link"
+										href="{% url 'store' %}?page={{ paged_products.paginator.num_pages }}">>></a>
+								</li>
+								{% else %}
+								<li class="page-item disabled">
+									<a class="page-link" href="#">></a>
+								</li>
+								<li class="page-item disabled">
+									<a class="page-link" href="#">>></a>
+								</li>
+								{% endif %}
+							</ul>
+						</nav>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/shop_custom.js' %}"></script>
+{% endblock %}

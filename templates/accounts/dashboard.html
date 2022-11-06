@@ -1,0 +1,65 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+<link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+    <div class="container">
+        {% include 'includes/alerts.html' %}
+        <div class="row">
+            {% include 'accounts/dashboard_sidebar.html' %}
+        <main class="col-md-9">
+            <article class="card">
+            <header class="card-header">
+                <strong class="d-inline-block mr-3">Đăng nhập bởi:</strong>
+                <span>{{ user.full_name }}</span>
+            </header>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" style="text-align:center;">
+                            <div class="card-body">
+                                <h5 class="card-title">Tổng số đơn hàng</h5>
+                                <h4>{{ orders_count }}</h4>
+                                <a href="{% url 'my_orders' %}">Xem đơn hàng</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card" style="text-align:center;">
+                            <div class="card-body">
+                                {% if user_profile.profile_picture %}
+                                <img src="{{ user_profile.profile_picture.url }}" alt="User Profile Picture" width="50" height="50" style="border-radius:50%;">
+                                {% else %}
+                                <img src="{% static 'images/avatar/ava.jpg' %}" alt="User Profile Picture" width="50" height="50" style="border-radius:50%;">
+                                {% endif %}
+                                <p class="mb-0"><strong>{{user.email}}</strong></p>
+                                <p>{{user.phone_number}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+            </article> <!-- order-group.// -->
+        </main>
+    </div> <!-- row.// -->
+    </div>
+
+
+    </section>
+
+
+{% endblock content %}

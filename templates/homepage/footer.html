@@ -1,0 +1,153 @@
+{% load static %}
+
+	<!-- Brands -->
+	<div class="brands">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="brands_slider_container">
+
+						<!-- Brands Slider -->
+
+						<div class="owl-carousel owl-theme brands_slider">
+
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_1.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_2.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_3.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_4.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_5.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_6.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_7.jpg' %}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{% static 'images/brands_8.jpg' %}" alt=""></div></div>
+
+						</div>
+
+						<!-- Brands Slider Navigation -->
+						<div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
+						<div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Recently Viewed -->
+
+	<div class="viewed">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="viewed_title_container">
+						<h3 class="viewed_title">Sản phẩm xem gần đây</h3>
+						<div class="viewed_nav_container">
+							<div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
+							<div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
+						</div>
+					</div>
+
+					<div class="viewed_slider_container">
+
+						<!-- Recently Viewed Slider -->
+
+						<div class="owl-carousel owl-theme viewed_slider">
+
+<!--							&lt;!&ndash; Recently Viewed Item &ndash;&gt;-->
+<!--							{% for product in list_view %}-->
+<!--							<div class="owl-item">-->
+<!--								<div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">-->
+<!--									<div class="viewed_image"><img src={{product.images.url}} alt=""></div>-->
+<!--									<div class="viewed_content text-center">-->
+<!--										{% if product.sale_price > 0 %}-->
+<!--										<div class="viewed_price">${{product.sale_price}}<span>${{product.price}}</span></div>-->
+<!--										{% else %}-->
+<!--										<div class="viewed_price">${{product.price}}</div>-->
+<!--										{% endif %}-->
+<!--										<div class="viewed_name"><a href="{{product.get_url}}">{{product.product_name}}</a></div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--							{% endfor %}-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
+						<div class="newsletter_title_container">
+							<div class="newsletter_icon"><img src="{% static 'images/send.png' %}" alt=""></div>
+							<div class="newsletter_title">HPTV SHOP</div>
+							<div class="newsletter_text"><p>..đồng hành cùng bạn trong từng bước tiến công nghệ ! </p></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-3 footer_col">
+					<div class="footer_column footer_contact">
+						<div class="logo_container">
+							<div class="logo"><a href="#">HPTV SHOP</a></div>
+						</div>
+						<div class="footer_title">Liên hệ chúng tôi 24/7</div>
+						<div class="footer_phone">+84 397611383</div>
+						<div class="footer_contact_text">
+							<p>01, Võ Văn Ngân</p>
+							<p>TP.Thủ Đức, TP.HCM</p>
+						</div>
+						<div class="footer_social">
+							<ul>
+								<li><a href="https://www.facebook.com/h.n.v.352"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="https://www.instagram.com/khowfsix/?hl=en"><i class="fab fa-instagram"></i></a></li>
+								<li><a href="https://github.com/hoangnhatvu/DoAnPython.git"><i class="fab fa-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-2 offset-lg-2">
+					<div class="footer_column">
+						<div class="footer_title">Nhóm 1</div>
+						<ul class="footer_list">
+
+							<li><a href="https://www.facebook.com/h.n.v.352">Hoàng Nhất Vũ</a></li>
+					</div>
+				</div>
+
+				<div class="col-lg-2">
+					<div class="footer_column">
+						<div class="footer_title">MSSV</div>
+						<ul class="footer_list">
+
+							<li><a href="mailto:20110751@student.hcmute.edu.vn">20110751</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-2">
+					<div class="footer_column">
+						<div class="footer_title"></div>
+						<ul class="footer_list">
+							<ul class="footer_list">
+							<li><a href="#"></a></li>
+							<li><a href="#"></a></li>
+						</ul>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</footer>

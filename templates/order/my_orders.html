@@ -1,0 +1,67 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/shop_styles.css' %}">
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+<link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+    {% include 'includes/alerts.html' %}
+
+    <div class="container">
+        <div class="row">
+            {% include 'accounts/dashboard_sidebar.html' %}
+        <main class="col-md-9">
+            <article class="card">
+            <header class="card-header">
+                <strong class="d-inline-block mr-3">Lịch sử đơn hàng</strong>
+            </header>
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Mã đơn hàng</th>
+                              <th scope="col">Tên người đặt</th>
+                              <th scope="col">Điện thoại</th>
+                              <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Ngày đặt hàng</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                                {% for order in orders %}
+                            <tr>
+                              <th scope="row"><a href="{% url 'order_detail' order.order_number %}">{{order.order_number}}</a></th>
+                              <td>{{order.full_name}}</td>
+                              <td>{{order.phone}}</td>
+                              <td>${{order.order_total}}</td>
+                                    <td>{{order.created_at}}</td>
+                            </tr>
+                        {% endfor %}
+
+                          </tbody>
+                        </table>
+                    </div>
+
+                </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+            </article> <!-- order-group.// -->
+        </main>
+    </div> <!-- row.// -->
+    </div>
+
+
+    </section>
+
+
+{% endblock content %}

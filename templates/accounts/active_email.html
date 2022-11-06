@@ -1,0 +1,5 @@
+{% autoescape off %}
+Chào {{ user.username }},
+Vui lòng ấn vào link để kích hoạt tài khoản của bạn!
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
