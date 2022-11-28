@@ -46,7 +46,7 @@
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action=# class="header_search_form clearfix" method="POST">
+									<form action="{% url 'search' ' '%}" class="header_search_form clearfix" method="POST">
 										{% csrf_token %}
 <!--										Nhập tên sản phẩm hoặc cái gì đó của sản phẩm cần tìm-->
 										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm" aria-label="Search" name="searching">

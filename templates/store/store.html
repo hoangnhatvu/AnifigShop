@@ -11,7 +11,7 @@
 {% block content %}
 <div class="super_container">
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/shop_background.jpg' %}"></div>
+		{% comment %} <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/shop_background.jpg' %}"></div> {% endcomment %}
 		<div class="home_overlay"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
 			<h2 class="home_title">Tất cả sản phẩm</h2>
@@ -47,10 +47,10 @@
 						<div class="sidebar_section">
 							<div class="sidebar_subtitle brands_subtitle">Hãng</div>
 							<ul class="brands_list">
-								<li class="brand"><a href="{% url 'search' 'Apple'%}">Apple</a></li>
+								{% comment %} <li class="brand"><a href="{% url 'search' 'Apple'%}">Apple</a></li>
 								<li class="brand"><a href="{% url 'search' 'Google'%}">Google</a></li>
 								<li class="brand"><a href="{% url 'search' 'Samsung'%}">Samsung</a></li>
-								<li class="brand"><a href="{% url 'search' 'Xiaomi'%}">Xiaomi</a></li>
+								<li class="brand"><a href="{% url 'search' 'Xiaomi'%}">Xiaomi</a></li> {% endcomment %}
 							</ul>
 						</div>
 					</div>

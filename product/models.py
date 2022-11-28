@@ -32,8 +32,8 @@ class Product(models.Model):
     num_visit = models.IntegerField(default=0)
     last_visit = models.DateTimeField(blank=True, null=True)
 
-    def get_url(self):
-        return reverse('product_detail', args=[self.category.slug, self.slug])
+    # def get_url(self):
+    #     return reverse('product_detail', args=[self.category.slug, self.slug])
 
     def get_price(self):
         if self.sale_price > 0:
