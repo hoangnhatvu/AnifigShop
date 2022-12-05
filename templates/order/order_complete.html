@@ -45,8 +45,8 @@
                                 <ul class="list-unstyled text-right">
                                     <li><strong>Vận chuyển đến:</strong></li>
                                     <li>{{ order.full_name }}</li>
-                                    <li>{{ order.full_address }}</li>
-                                    <li>{{ order.city }}, {{ order.state }}</li>
+                                    <li>{{ order.phone }}</li>
+                                    <li>{{ order.full_address }}</li>                                    
                                 </ul>
                             </div>
                         </div>
@@ -77,15 +77,7 @@
                                         <tbody>
                                             {% for item in ordered_products %}
                                             <tr>
-                                                <td>{{ item.product.product_name }}
-                                                    <p class="text-muted small">
-                                                        {% if item.variations.all %}
-                                                        {% for i in item.variations.all %}
-                                                        {{ i.variation_category | capfirst }} : {{ i.variation_value | capfirst }} <br>
-                                                        {% endfor %}
-                                                        {% endif %}
-                                                    </p>
-                                                </td>
+                                                <td>{{ item.product.product_name }} </td>
                                                 <td class="text-center">{{ item.quantity }}</td>
                                                 <td class="text-center">${{ item.product_price }} USD</td>
                                             </tr>
@@ -98,7 +90,7 @@
                                             </tr>
                                             <tr>
                                                 <th colspan="2" class="text-right">Phí vận chuyển:</th>
-                                                <th class="text-center">${{ order.tax }} USD</th>
+                                                <th class="text-center">${{ order.ship }} USD</th>
                                             </tr>
                                             <tr>
                                                 <th colspan="2" class="text-right">Thành tiền:</th>

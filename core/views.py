@@ -21,8 +21,8 @@ def store(request,category_slug=None):
     return render(request, 'store/store.html', context = context)
 def HomeView(request):
     products = Product.objects.all().filter(is_available=True)
-    trend_products = Product.objects.all().order_by('-num_visit')[0:20]
-    best_seller_products = Product.objects.all().order_by('-num_order')[0:20]
+    trend_products = Product.objects.all().order_by('-num_visit')[0:10]
+    best_seller_products = Product.objects.all().order_by('-num_order')[0:10]
     context = {
         'products': products,
         'trend_products': trend_products,

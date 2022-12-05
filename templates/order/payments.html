@@ -38,7 +38,6 @@
                     <div class="card-body">
                         <p class="card-text mb-0">{{ order.full_name }}</p>
                         <p class="card-text mb-0">{{ order.full_address }}</p>
-                        <p class="card-text mb-0">{{ order.city }}, {{ order.state }}</p>
                         <p class="card-text mb-0">{{ order.email }}</p>
                         <p class="card-text mb-0">{{ order.phone }}</p>
                         {% if order.order_note %}
@@ -74,14 +73,7 @@
                                                     class="img-sm"></div>
                                             <figcaption class="info">
                                                 <a href="{{ cart_item.product.get_url }}" class="title text-dark">
-                                                    {{ cart_item.product.product_name }}</a>
-                                                <p class="text-muted small">
-                                                    {% if cart_item.variations.all %}
-                                                    {% for item in cart_item.variations.all %}
-                                                    {{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
-                                                    {% endfor %}
-                                                    {% endif %}
-                                                </p>
+                                                    {{ cart_item.product.product_name }}</a>                                               
                                             </figcaption>
                                         </figure>
                                     </td>
@@ -119,7 +111,7 @@
 						</dl>
 						<dl class="dlist-align">
 							<dt>Phí vận chuyển:</dt>
-							<dd class="text-right">${{ tax }}</dd>
+							<dd class="text-right">${{ ship }}</dd>
 						</dl>
 						<dl class="dlist-align">
 							<dt>Thành tiền:</dt>

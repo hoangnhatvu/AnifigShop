@@ -22,49 +22,31 @@
                         <form action="{% url 'place_order' %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
-                                <div class="col form-group">
+                                <div class="col">
                                     <label for="">Tên</label>
-                                    <input type="text" name="first_name" class="form-control" required>
+                                    <input type="text" name="first_name" value="{{user.first_name}}" class="form-control" required>
                                 </div>
-                                <div class="col form-group">
+                                <div class="col">
                                     <label for="">Họ</label>
-                                    <input type="text" name="last_name" class="form-control" required>
+                                    <input type="text" name="last_name" value="{{user.last_name}}" class="form-control" required>
                                 </div>
+                            </div>                            
+                            <div class="form-row">
+                                <label for="">Email</label>
+                                <input type="email" name="email" value="{{user.email}}" class="form-control" required>
                             </div>
                             <div class="form-row">
-                                <div class="col form-group">
-                                    <label for="">Email</label>
-                                    <input type="email" name="email" class="form-control" required>
-                                </div>
-                                <div class="col form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" name="phone" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <label for="">Địa chỉ 1</label>
-                                    <input type="text" name="address_line_1" class="form-control"required>
-                                </div>
-                                <div class="col form-group">
-                                    <label for="">Địa chỉ 2</label>
-                                    <input type="text" name="address_line_2" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <label for="">Thành Phố/Tỉnh</label>
-                                    <input type="text" name="city" class="form-control" required>
-                                </div>
-                                <div class="col form-group">
-                                    <label for="">Quận/Huyện</label>
-                                    <input type="text" name="state" class="form-control" required>
-                                </div>
-                            </div>
+                                <label for="">Số điện thoại</label>
+                                <input type="text" name="phone" value="{{user_profile.phone_number}}" class="form-control" required>
+                            </div>                        
+                            <div class="form-row">                                
+                                <label for="">Địa chỉ</label>
+                                <input type="text" name="address" value="{{user_profile.address}}" class="form-control"required>
+                            </div>                            
                             <div class="form-row">
                                 <label for="">Ghi chú</label>
                                 <textarea name="order_note" rows="2" class="form-control"></textarea>
-                            </div>
+                            </div>                        
                     </div>
                 </div> <!-- card.// -->
 
@@ -122,8 +104,8 @@
                             </tbody>
                         </table>
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Xác nhận</button>
-                        <a href="{% url 'store' %}" class="btn btn-light btn-block">Tiếp tục mua sắm</a>
-                        </form>
+                        <a href="{% url 'store' %}" class="btn btn-light btn-block">Tiếp tục mua sắm</a>    
+                    </form>                    
                     </div> <!-- card-body.// -->
                 </div> <!-- card.// --> 
             </aside> <!-- col.// -->

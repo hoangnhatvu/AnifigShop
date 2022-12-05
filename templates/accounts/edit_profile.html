@@ -49,7 +49,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Số điện thoại</label>
-                                {{user_form.phone_number}}
+                                {{profile_form.phone_number}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Hình đại diện</label>
@@ -57,24 +57,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Địa chỉ 1</label>
-                            {{profile_form.address_line_1}}
-                        </div>
-                        <div class="form-group">
-                            <label>Địa chỉ 2</label>
-                            {{profile_form.address_line_2}}
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label>Thành phố/Tỉnh</label>
-                                {{profile_form.city}}
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Quận/Huyện</label>
-                                {{profile_form.state}}
-                            </div>
-
-                        </div>
+                            <label>Địa chỉ</label>
+                            {{profile_form.address}}
+                        </div>                        
                         <input type="submit" value="Lưu thông tin" class="btn btn-primary">
                     </form>
                 </div> <!-- row.// -->

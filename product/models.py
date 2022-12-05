@@ -18,7 +18,6 @@ class Category(models.Model):
         return self.category_name
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(max_length=500, blank=True)
@@ -27,13 +26,14 @@ class Product(models.Model):
     images = models.ImageField(upload_to='photos/products')
     stock = models.IntegerField()
     is_available = models.BooleanField(default=True)
-    firm = models.CharField(max_length=50, blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     num_order = models.IntegerField(default=0)
     num_visit = models.IntegerField(default=0)
-    last_visit = models.DateTimeField(blank=True, null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
-    # def get_url(self):
-    #     return reverse('product_detail', args=[self.category.slug, self.slug])
+    def get_url(self):
+        return reverse('product_detail', args=[self.category.slug, self.slug])
 
     def get_price(self):
         if self.sale_price > 0:
@@ -64,6 +64,9 @@ class ReviewRating(models.Model):
     subject = models.CharField(max_length=100, blank=True)
     review = models.TextField(max_length=500, blank=True)
     rating = models.FloatField()
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.subject

@@ -12,15 +12,15 @@
 						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{% static 'images/mail.png' %}" alt=""></div><a href="mailto:hoangnhatvu350800@gmail.com">hoangnhatvu350800@gmai.com</a></div>
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
-<!--								{% if user.id is None %}-->
+								{% if user.id is None %}
 								<div class="user_icon"><img src="{% static 'images/user.svg' %}" alt=""></div>
-								<div><a href=#>Đăng ký</a></div>
-								<div><a href=#>Đăng nhập</a></div>
-<!--								{% else %}-->
-<!--								<div class="user_icon"><img src="{% static 'images/user.svg' %}" alt=""></div>-->
-<!--								<div><a href="#">{{user.first_name}}</a></div>-->
-<!--								<div><a href="#">Đăng xuất</a></div>-->
-<!--								{% endif %}-->
+								<div><a href="{% url 'register' %}">Đăng ký</a></div>
+								<div><a href="{% url 'login' %}">Đăng nhập</a></div>
+								{% else %}
+								<div class="user_icon"><img src="{% static 'images/user.svg' %}" alt=""></div>
+								<div><a href="{% url 'dashboard' %}">{{user.first_name}}</a></div>
+								<div><a href="{% url 'logout' %}">Đăng xuất</a></div>
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="/">HPTV SHOP</a></div>
+							<div class="logo"><a href="/">ANIFIG SHOP</a></div>
 						</div>
 					</div>
 
@@ -78,7 +78,7 @@
 										<div class="cart_count"><span>{{cart_count}}</span></div>
 									</div>
 									<div class="cart_content">
-									<div class="cart_text"><a href=#>Giỏ hàng</a></div>
+									<div class="cart_text"><a href="{% url 'cart' %}">Giỏ hàng</a></div>
 									</div>
 								</div>
 							</div>
@@ -105,30 +105,21 @@
 									<div class="cat_menu_text">Danh mục sản phẩm</div>
 								</div>
 								<ul class="cat_menu">
-<!--									{% for category in links %}-->
-<!--										<li><a href="#">{{category.category_name}}<i class="fas fa-chevron-right"></i></a></li>-->
-<!--									{% endfor %}-->
+									{% for category in links %}
+										<li><a href="{% url 'products_by_category' category.slug %}">{{category.category_name}}<i class="fas fa-chevron-right"></i></a></li>
+									{% endfor %}
 								</ul>
 							</div>
 							<!-- Main Nav Menu -->
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href=#>Trang chủ<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href=#>Cửa hàng<i class="fas fa-chevron-down"></i></a></li>
-									<li class="hassubs">
-										<a href=#>Hãng nổi bật<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href=#>Apple<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href=#>SamSung<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href=#>Oppo<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href=#>Xiaomi<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href=#>VSmart<i class="fas fa-chevron-down"></i></a></li>
-										</ul>
-									</li>
-									<li><a href=#>Khám phá<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href=#>Liên hệ<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href=#>Về chúng tôi<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="/">Trang chủ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="/store">Cửa hàng<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="#">Thương hiệu nổi bật<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="#">Khám phá<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="{% url 'contact' %}">Liên hệ<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="#footer-section">Về chúng tôi<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
 
