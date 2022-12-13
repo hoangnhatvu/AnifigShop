@@ -13,10 +13,6 @@ from django.contrib.auth import authenticate
 from .forms import RegistrationForm, UserForm, UserProfileForm
 from order.models import Order, OrderProduct
 from .models import Account, UserProfile
-from cart.views import _cart_id
-
-import requests
-
 
 def register(request):
     if request.method == 'POST':

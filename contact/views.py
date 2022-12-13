@@ -2,9 +2,13 @@ from django.shortcuts import render,redirect
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.contrib import messages
-from account.models import Account
+from django.contrib.auth.decorators import login_required
+from account.models import UserProfile
 # Create your views here.
+
+@login_required(login_url='login')
 def ContactView(request):
+    user_profile = UserProfile.objects.get(user_id=request.user.id)
     if request.method == 'POST':
         mail_subject = 'Phản hồi từ khách hàng'
         message = render_to_string('contact/contact_mail.html', {
@@ -20,4 +24,7 @@ def ContactView(request):
             message="Cảm ơn bạn đã liên hệ với chúng tôi!"
         )
         return redirect('contact')
-    return render(request, 'contact/contact.html')
+    context = {
+            'user_profile': user_profile,
+        }
+    return render(request, 'contact/contact.html', context=context)

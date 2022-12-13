@@ -11,8 +11,9 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
-class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'address')
+    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['show_save_and_continue'] = False
+        return super(AccountAdmin, self).changeform_view(request, object_id, extra_context=extra_context)
 
 admin.site.register(Account, AccountAdmin)
-admin.site.register(UserProfile, UserProfileAdmin)

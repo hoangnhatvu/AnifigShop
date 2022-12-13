@@ -70,9 +70,9 @@
 						<form action="{% url 'contact' %}" method="POST" id="contact_form">
 							{% csrf_token %}
 							<div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
-								<input type="text" name="name" class="contact_form_name input_field" placeholder="Tên của bạn" required="required" data-error="Vui lòng điền trường này">
-								<input type="text" name="email" class="contact_form_email input_field" placeholder="Email" required="required" data-error="Vui lòng điền trường này">
-								<input type="text" name="phone" class="contact_form_phone input_field" placeholder="Số điện thoại">
+								<input type="text" name="name" class="contact_form_name input_field" value="{{ user.full_name }}" placeholder="Tên của bạn" required="required" data-error="Vui lòng điền trường này">
+								<input type="email" name="email" class="contact_form_email input_field" value="{{ user.email }}" placeholder="Email" required="required" data-error="Vui lòng điền trường này">
+								<input type="text" name="phone" class="contact_form_phone input_field" value="{{ user_profile.phone_number }}" placeholder="Số điện thoại">
 							</div>
 							<div class="contact_form_text">
 								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Nội dung" required="required" data-error="Vui lòng không để trống"></textarea>
