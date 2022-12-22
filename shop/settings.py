@@ -23,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_pg9&ynrbq(93q49ukf0w1&070ywzsq+m!5b=ehcixrp&ok2n+'
+SECRET_KEY = [os.environ['SECRET']]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['anifigshop.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['anifigshop.azurewebsites.net']]
 
 
 # Application definition
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,7 +88,7 @@ AUTH_USER_MODEL = 'account.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': [os.path.join(BASE_DIR), 'db.sqlite3'],
     }
 }
 
@@ -135,6 +137,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.WARNING: 'warning',
