@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'anifigshop'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D77ABD48C26D42D0BC22D33200A3D926 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F8DF89DCE63A4692AD6A5653BC1F39A6 }}
