@@ -23,13 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = [os.environ['SECRET']]
+SECRET_KEY = 'django-insecure-_pg9&ynrbq(93q49ukf0w1&070ywzsq+m!5b=ehcixrp&ok2n+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['anifigshop.azurewebsites.net']
-CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['anifigshop.azurewebsites.net']]
 
 
 # Application definition
@@ -88,7 +87,7 @@ AUTH_USER_MODEL = 'account.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': [os.path.join(BASE_DIR), 'db.sqlite3'],
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
